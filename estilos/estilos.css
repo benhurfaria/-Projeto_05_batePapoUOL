@@ -1,0 +1,45 @@
+body{
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+}
+
+.topo{
+    top: 0;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.baixo{
+    bottom: 0;
+    box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.barra{
+    height: 80px;
+    width: 100%;
+    position: fixed;
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.baixo ion-icon{
+    font-size: 26px;
+}
+.topo ion-icon{
+    font-size: 31px;
+}
+
+img{
+    height: 53px;
+    width: 75px;
+
+}
+textarea{
+    text-decoration: none;
+}
+
+.conversa{
+    margin-top: 90px;
+    margin-bottom: 90px;
+}
