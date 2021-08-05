@@ -1,6 +1,8 @@
 body{
     font-family: 'Roboto', sans-serif;
-    font-weight: bold;
+
+    background-color: #E5E5E5;
+    
 }
 
 .topo{
@@ -11,6 +13,7 @@ body{
 .baixo{
     bottom: 0;
     box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.05);
+    color: #000000;
 }
 
 .barra{
@@ -22,14 +25,26 @@ body{
     justify-content: space-around;
     align-items: center;
 }
-
+input{
+    height: 90%;
+    width: 280px;
+    border: none;
+    font-size: 18px;
+    color: #000000;
+    outline: none;
+}
 .baixo ion-icon{
     font-size: 26px;
 }
 .topo ion-icon{
     font-size: 31px;
 }
-
+.topo div{
+    height: 90%;
+    width:260px;
+    display: flex;
+    align-items: center;
+}
 img{
     height: 53px;
     width: 75px;
@@ -42,4 +57,10 @@ textarea{
 .conversa{
     margin-top: 90px;
     margin-bottom: 90px;
+    padding-left: 10px;
+    padding-right: 10px;
+    
+    box-sizing: border-box;
+    background-color: red;
+    
 }
