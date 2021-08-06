@@ -2,9 +2,10 @@ const URL_CHAT = "https://mock-api.bootcamp.respondeai.com.br/api/v3/uol/partici
 const URL_CONVERSA = "https://mock-api.bootcamp.respondeai.com.br/api/v3/uol/messages";
 let nome;
 let mensagem;
+let mensagens = [];
 //comecando a cuidar dos participantes
 
-function inputNome(){
+function inputNome() {
     nome = prompt("Qual seu nome?");
     let nameEntra = {
         name: nome
@@ -13,12 +14,12 @@ function inputNome(){
 }
 
 inputNome();
-function colocarNome(nameEntra){
+function colocarNome(nameEntra) {
     const promessa = axios.post(URL_CHAT, nameEntra);
     promessa.then(pegarNomes);
 }
 
-function pegarNomes(resposta){
+function pegarNomes(resposta) {
     const promessa = axios.get(URL_CHAT);
     promessa.then(console.log);
 }
@@ -26,8 +27,9 @@ function pegarNomes(resposta){
 //terminando a cuidar dos participantes
 
 //comecando cuidar das mensagens
-function inputMensagem(){
+function inputMensagem() {
     mensagem = document.querySelector("input").value;
+    document.querySelector("input").value = "";
     console.log(mensagem);
     let mensagemEntre = {
         from: nome,
@@ -36,17 +38,35 @@ function inputMensagem(){
         type: "message",
         time: "08:02:50"
     };
-    mensagem = " ";
+
     colocarMensagem(mensagemEntre);
 }
 
-function colocarMensagem(mensagemEntre){
+function colocarMensagem(mensagemEntre) {
     const promessa = axios.post(URL_CONVERSA, mensagemEntre);
     promessa.then(pegarMensagem);
 }
 
-function pegarMensagem(){
+function pegarMensagem() {
     const promessa = axios.get(URL_CONVERSA);
-    promessa.then(console.log);
+    promessa.then(carregarMensagem);
+}
+
+function carregarMensagem(resposta) {
+    mensagens = resposta.data;
+    console.log(mensagens);
+    renderizarMensagens();
 }
 //terminando cuidar das mensagens
+
+function renderizarMensagens() {
+    let divConversas = document.querySelector(".conversa");
+    divConversas.innerHTML = "";
+    for (let i = 0; i < mensagens.length; i++) {
+        if (mensagens[i].type === "status") {
+            divConversas.innerHTML += `<div class="entrou">
+                <p>(${mensagens[i].time}) <strong>${mensagens[i].from}</strong> ${mensagens[i].text} </p>
+            </div>`;
+        }
+    }
+}
