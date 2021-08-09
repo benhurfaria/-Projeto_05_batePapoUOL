@@ -86,8 +86,6 @@ function renderizarMensagens() {
     let ultimoBool = false;
 
     if (ultimoAnterior === mensagens[mensagens.length - 1].time && proximoBool === false) {
-        console.log(ultimoAnterior);
-        console.log(mensagens[mensagens.length - 1].time);
         ultimoBool = true;
         proximoBool = true;
     }
