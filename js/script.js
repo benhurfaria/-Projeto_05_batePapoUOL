@@ -31,8 +31,7 @@ function voltaPedirNome(error){
 
 function pegarNomes(resposta) {
     const promessa = axios.get(URL_CHAT);
-    console.log("mel");
-    promessa.then(console.log);
+    promessa.then();
     inputMensagem();
 }
 
@@ -51,6 +50,7 @@ function inputMensagem() {
             type: "message",
             time: ""
         };
+        
         colocarMensagem(mensagemEntre);
     } else {
         pegarMensagem();
@@ -60,8 +60,13 @@ function inputMensagem() {
 function colocarMensagem(mensagemEntre) {
     const promessa = axios.post(URL_CONVERSA, mensagemEntre);
     promessa.then(pegarMensagem);
+    promessa.catch(recarregarPagina);
 }
 
+function recarregarPagina(){
+    alert("Você saiu da sala e é necessario colocar novamente o nome");
+    window.location.reload();
+}
 
 function pegarMensagem() {
     const promessa = axios.get(URL_CONVERSA);
@@ -158,7 +163,6 @@ function renderizarMensagens() {
 
     if(ultimoBool && proximoBool){
         let divUltimo = document.querySelector(".ultimo");
-        console.log("pq???")
         divUltimo.scrollIntoView();
     }
     if(primeiraVez === 0){
