@@ -42,7 +42,6 @@ function inputMensagem() {
     mensagem = document.querySelector("input").value;
     document.querySelector("input").value = "";
     if (mensagem.length > 0) {
-        console.log(mensagem);
         let mensagemEntre = {
             from: nome,
             to: "Todos",
@@ -52,6 +51,7 @@ function inputMensagem() {
         };
         
         colocarMensagem(mensagemEntre);
+        
     } else {
         pegarMensagem();
     }
